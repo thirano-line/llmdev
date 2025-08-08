@@ -20,7 +20,7 @@ def test_login():
     assert result == "ログイン成功"
 
 def test_login_fail():
+    obj = authenticator.Authenticator()
+    obj.register("user", "pass")
     with pytest.raises(ValueError, match="エラー: ユーザー名またはパスワードが正しくありません。"):
-        obj = authenticator.Authenticator()
-        obj.register("user", "pass")
         result = obj.login("user", "wrong")
